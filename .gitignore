@@ -1,0 +1,16 @@
+node_modules/
+dist/
+coverage/
+*.log
+.DS_Store
+.env
+.env.local
+.claude/settings.local.json
+
+# Never commit compiled JS next to TS sources (build artifacts only belong in dist/)
+tests/**/*.js
+tests/**/*.d.ts
+tests/**/*.js.map
+src/**/*.js
+src/**/*.d.ts
+src/**/*.js.map

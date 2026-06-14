@@ -1,0 +1,72 @@
+{
+  "_schema": {
+    "description": "Price table for Claude models. Seeded from the Anthropic pricing page. Add rows when prices change — never delete old rows so historical events keep their historical cost.",
+    "source": "https://www.anthropic.com/pricing",
+    "fields": {
+      "model": "Model identifier as it appears in Claude Code JSONL logs (message.model field)",
+      "effective_date": "YYYY-MM-DD. The pricing engine picks the row with the latest effective_date <= event timestamp.",
+      "input_per_mtok": "USD per million input tokens",
+      "output_per_mtok": "USD per million output tokens",
+      "cache_write_per_mtok": "USD per million cache-creation tokens (cache_creation_input_tokens in logs)",
+      "cache_read_per_mtok": "USD per million cache-read tokens (cache_read_input_tokens in logs)",
+      "verify_before_trusting": "If true, this row was seeded at scaffold time and must be verified against the Anthropic pricing page before relying on it for accurate costs"
+    },
+    "pricing_note": "The four token classes have very different prices. cache_read is ~10% of input price; cache_write is ~125% of input price. A cache-heavy Claude Code session will be costed very wrong if you sum raw tokens. This engine prices each class separately — that is the whole point."
+  },
+  "prices": [
+    {
+      "model": "claude-opus-4-7",
+      "effective_date": "2025-01-01",
+      "input_per_mtok": 15.0,
+      "output_per_mtok": 75.0,
+      "cache_write_per_mtok": 18.75,
+      "cache_read_per_mtok": 1.5,
+      "verify_before_trusting": true
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "effective_date": "2025-01-01",
+      "input_per_mtok": 3.0,
+      "output_per_mtok": 15.0,
+      "cache_write_per_mtok": 3.75,
+      "cache_read_per_mtok": 0.3,
+      "verify_before_trusting": true
+    },
+    {
+      "model": "claude-haiku-4-5-20251001",
+      "effective_date": "2025-01-01",
+      "input_per_mtok": 0.8,
+      "output_per_mtok": 4.0,
+      "cache_write_per_mtok": 1.0,
+      "cache_read_per_mtok": 0.08,
+      "verify_before_trusting": true
+    },
+    {
+      "model": "claude-3-5-sonnet-20241022",
+      "effective_date": "2024-10-22",
+      "input_per_mtok": 3.0,
+      "output_per_mtok": 15.0,
+      "cache_write_per_mtok": 3.75,
+      "cache_read_per_mtok": 0.3,
+      "verify_before_trusting": true
+    },
+    {
+      "model": "claude-3-5-haiku-20241022",
+      "effective_date": "2024-10-22",
+      "input_per_mtok": 0.8,
+      "output_per_mtok": 4.0,
+      "cache_write_per_mtok": 1.0,
+      "cache_read_per_mtok": 0.08,
+      "verify_before_trusting": true
+    },
+    {
+      "model": "claude-3-opus-20240229",
+      "effective_date": "2024-02-29",
+      "input_per_mtok": 15.0,
+      "output_per_mtok": 75.0,
+      "cache_write_per_mtok": 18.75,
+      "cache_read_per_mtok": 1.5,
+      "verify_before_trusting": true
+    }
+  ]
+}
